@@ -1,0 +1,193 @@
+# 1. List operations
+L = [11, 12, 13, 14]
+
+# (i) Add 50 and 60
+L.extend([50, 60])
+print("After adding:", L)
+
+# (ii) Remove 11 and 13
+L.remove(11)
+L.remove(13)
+print("After removing 11 and 13:", L)
+
+# (iii) Sort ascending
+print("Ascending:", sorted(L))
+
+# (iv) Sort descending
+print("Descending:", sorted(L, reverse=True))
+
+# (v) Search for 13
+print("13 in list?", 13 in L)
+
+# (vi) Count elements
+print("Count:", len(L))
+
+# (vii) Sum all elements
+print("Sum:", sum(L))
+
+# (viii) Sum of odd numbers
+print("Sum of odd:", sum(x for x in L if x % 2 != 0))
+
+# (ix) Sum of even numbers
+print("Sum of even:", sum(x for x in L if x % 2 == 0))
+
+# (x) Sum of primes
+def is_prime(n):
+    if n < 2: return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0: return False
+    return True
+print("Sum of primes:", sum(x for x in L if is_prime(x)))
+
+# (xi) Clear elements
+L.clear()
+print("Cleared L:", L)
+
+# (xii) Delete L
+del L
+# print(L)  # would raise error since deleted
+
+
+# 2. Sum list without built-in sum
+nums = [1, 2, 3, 4, 5]
+s = 0
+for n in nums:
+    s += n
+print("Sum without inbuilt:", s)
+
+# 3. Multiply list without built-in
+nums = [1, 2, 3, 4]
+product = 1
+for n in nums:
+    product *= n
+print("Product without inbuilt:", product)
+
+# 4. Generate 3*4*6 array of '*'
+array = [[['*' for _ in range(6)] for _ in range(4)] for _ in range(3)]
+print("3D Array:", array)
+
+
+# 5. Dictionary operations
+D = {1:5.6, 2:7.8, 3:6.6, 4:8.7, 5:7.7}
+
+# (i) Add entry key=8, value=8.8
+D[8] = 8.8
+print("Added entry:", D)
+
+# (ii) Remove key=2
+D.pop(2, None)
+print("After removing 2:", D)
+
+# (iii) Check if key=6 present
+print("6 in dict?", 6 in D)
+
+# (iv) Count elements
+print("Count:", len(D))
+
+# (v) Add all values
+print("Sum of values:", sum(D.values()))
+
+# (vi) Update value of 3 to 7.1
+D[3] = 7.1
+print("After update:", D)
+
+# (vii) Clear dictionary
+D.clear()
+print("Cleared D:", D)
+
+
+# 6. Set operations
+S1 = {10, 20, 30, 40, 50, 60}
+S2 = {40, 50, 60, 70, 80, 90}
+
+# (i) Add 55, 66
+S1.update([55, 66])
+print("After adding:", S1)
+
+# (ii) Remove 10, 30
+S1.discard(10)
+S1.discard(30)
+print("After removing:", S1)
+
+# (iii) Check if 40 present
+print("40 in S1?", 40 in S1)
+
+# (iv) Union
+print("Union:", S1 | S2)
+
+# (v) Intersection
+print("Intersection:", S1 & S2)
+
+# (vi) Difference
+print("S1 - S2:", S1 - S2)
+
+
+# 7. Programs
+import random, string
+
+# (i) 100 random strings
+for _ in range(100):
+    length = random.randint(6, 8)
+    s = ''.join(random.choice(string.ascii_letters) for _ in range(length))
+    print(s)
+
+# (ii) Prime numbers 600–800
+for n in range(600, 801):
+    if is_prime(n):
+        print(n, end=" ")
+print()
+
+# (iii) Numbers between 100–1000 divisible by 7 and 9
+for n in range(100, 1001):
+    if n % 63 == 0:   # LCM(7,9)=63
+        print(n, end=" ")
+print()
+
+
+# 8. Exam schedule
+exam_st_date = (11, 12, 2025)
+print("The examination will start from: %i / %i / %i" % exam_st_date)
+
+
+# 9. Numbers divisible by 5
+numbers = [10, 23, 45, 50, 77, 100]
+for n in numbers:
+    if n % 5 == 0:
+        print(n)
+
+
+# 10. Even or odd using boolean
+num = 17
+is_even = (num % 2 == 0)
+print("Even?" if is_even else "Odd")
+
+
+# 11. Count substring "Emma"
+text = "Emma is good. Emma loves coding. Emma is smart."
+print("Emma count:", text.count("Emma"))
+
+
+# 12. New list odd from first, even from second
+list1 = [10, 21, 4, 45, 66, 93]
+list2 = [20, 33, 44, 55, 66]
+new_list = [x for x in list1 if x % 2 != 0] + [y for y in list2 if y % 2 == 0]
+print("New list:", new_list)
+
+
+# 13. Robot positions with even x
+positions = [(2,3), (4,5), (6,7), (7,8)]
+even_positions = [p for p in positions if p[0] % 2 == 0]
+print("Even x positions:", even_positions)
+
+
+# 14. Robot sensor readings > 3.0
+sensor_data = {1: 2.3, 2: 4.5, 3: 1.8, 4: 3.6}
+high_sensors = [k for k,v in sensor_data.items() if v > 3.0]
+print("Sensors > 3.0:", high_sensors)
+
+
+# 15. Commands not executed
+commands_received = {"MOVE", "TURN_LEFT", "TURN_RIGHT", "STOP"}
+commands_executed = {"MOVE", "TURN_LEFT", "STOP"}
+not_executed = commands_received - commands_executed
+print("Not executed commands:", not_executed)
